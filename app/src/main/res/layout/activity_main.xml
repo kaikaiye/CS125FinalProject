@@ -7,7 +7,7 @@
     tools:context=".MainActivity">
 
     <ImageView
-        android:id="@+id/imageView6"
+        android:id="@+id/star1"
         android:layout_width="43dp"
         android:layout_height="43dp"
         app:srcCompat="@android:drawable/btn_star_big_off"
@@ -15,7 +15,7 @@
         tools:layout_editor_absoluteY="28dp" />
 
     <ImageView
-        android:id="@+id/imageView16"
+        android:id="@+id/star2"
         android:layout_width="43dp"
         android:layout_height="43dp"
         app:srcCompat="@android:drawable/btn_star_big_off"
@@ -23,7 +23,7 @@
         tools:layout_editor_absoluteY="28dp" />
 
     <ImageView
-        android:id="@+id/imageView17"
+        android:id="@+id/star3"
         android:layout_width="43dp"
         android:layout_height="43dp"
         app:srcCompat="@android:drawable/btn_star_big_off"
@@ -31,7 +31,7 @@
         tools:layout_editor_absoluteY="28dp" />
 
     <ImageView
-        android:id="@+id/imageView18"
+        android:id="@+id/star4"
         android:layout_width="43dp"
         android:layout_height="43dp"
         app:srcCompat="@android:drawable/btn_star_big_off"
@@ -39,7 +39,7 @@
         tools:layout_editor_absoluteY="28dp" />
 
     <ImageView
-        android:id="@+id/imageView19"
+        android:id="@+id/star5"
         android:layout_width="43dp"
         android:layout_height="43dp"
         app:srcCompat="@android:drawable/btn_star_big_off"
