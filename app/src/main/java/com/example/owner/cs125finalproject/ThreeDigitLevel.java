@@ -3,11 +3,11 @@ package com.example.owner.cs125finalproject;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class Levels_Menu extends AppCompatActivity {
+public class ThreeDigitLevel extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_levels_menu);
+        setContentView(R.layout.activity_three_digit_level);
     }
 }
