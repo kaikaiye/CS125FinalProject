@@ -18,6 +18,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
+                                      <entry key="foregroundAssetType" value="CLIP_ART" />
                                       <entry key="foregroundImage" value="C:\Program Files\Android\Android Studio\plugins\android\lib\templates\gradle-projects\NewAndroidModule\root\res\drawable\bull.jpg" />
                                     </map>
                                   </option>
