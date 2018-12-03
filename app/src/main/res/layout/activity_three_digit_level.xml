@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".ThreeDigitLevel">
 
     <ImageView
         android:id="@+id/star5"
         android:layout_width="43dp"
         android:layout_height="43dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginLeft="3dp"
         android:layout_marginTop="28dp"
         app:layout_constraintStart_toEndOf="@+id/star4"
         app:layout_constraintTop_toTopOf="parent"
