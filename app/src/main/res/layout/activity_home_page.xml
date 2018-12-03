@@ -7,7 +7,7 @@
     tools:context=".HomePage">
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/title"
         android:layout_width="134dp"
         android:layout_height="61dp"
         android:layout_marginStart="8dp"
@@ -16,7 +16,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
-        android:text="Title"
+        android:text="MOO!"
         android:textColor="@color/colorPrimary"
         android:textSize="48sp"
         android:textStyle="bold"
@@ -25,11 +25,10 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.049"
-        tools:text="MOO!" />
+        app:layout_constraintVertical_bias="0.049" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/rules"
         android:layout_width="364dp"
         android:layout_height="378dp"
         android:layout_marginStart="8dp"
@@ -38,7 +37,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="8dp"
-        android:text="Rules"
+        android:text='HOW TO PLAY:  MOO! Is a random number guessing game. This game consists of 5 levels and an extra Challenge Level. Each level will generate an unknown number that you will try and guess. The number of digits and the amount of time to guess will change based on the level. The goal of the game is to guess the number in the fewest attempts, to receive all 5 stars. To tell you how close your guess was, you will be told how many "Bulls" and "Cows" that guess received. A Bull: means that one of the digits guessed is the correct number and is in the correct spot. A Cow: means a digit is correct, but the position is wrong. For example, if the number was 123 and you guessed 137, your guess would receive 1-Bull and 1-Cow because the 1 is in the right spot and the 3 is the correct digit but it’s in the wrong spot.  Note: The unknown number will NOT have repeating digits (ex. 121 is impossible).  The feedback will NOT specify which digits resulted in Bulls and/or Cows.  '
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.652"
