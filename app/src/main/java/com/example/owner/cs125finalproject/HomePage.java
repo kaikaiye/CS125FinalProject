@@ -22,6 +22,15 @@ public class HomePage extends AppCompatActivity {
                 startActivity(i);
             }
         });
+        Button rules = (Button) findViewById(R.id.rules_button);
+        rules.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("Click:","Opened Rules");
+                Intent i = new Intent(HomePage.this, Instructions.class);
+                startActivity(i);
+            }
+        });
     }
 
 }

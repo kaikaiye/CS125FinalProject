@@ -20,6 +20,7 @@
         <activity android:name=".FourDigitLevel"></activity>
         <activity android:name=".FiveDigitLevel"></activity>
         <activity android:name=".GameEnd"></activity>
+        <activity android:name=".Instructions"></activity>
     </application>
 
 </manifest>
