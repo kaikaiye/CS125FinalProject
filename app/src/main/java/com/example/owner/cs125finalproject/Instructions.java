@@ -17,7 +17,7 @@ public class Instructions extends AppCompatActivity {
         main_menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("Click:","Opened Rules");
+                Log.d("Click:","Return to Main Menu");
                 Intent i = new Intent(Instructions.this, HomePage.class);
                 startActivity(i);
             }
