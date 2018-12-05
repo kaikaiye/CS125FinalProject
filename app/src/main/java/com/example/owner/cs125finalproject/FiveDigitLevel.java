@@ -17,21 +17,30 @@ public class FiveDigitLevel extends AppCompatActivity {
     private EditText thirdDigit;
     private EditText fourthDigit;
     private EditText fifthDigit;
+    private ImageButton reset;
+    private ImageButton quit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_five_digit_level);
-        ImageButton reset =  findViewById(R.id.reset_button);
+        reset =  findViewById(R.id.reset_button);
         reset.setOnClickListener(new View.OnClickListener() {
+            int numOfResetClicks = 0;
             @Override
             public void onClick(View v) {
-                Log.d("Click:","Restarted Level");
-                Intent i = new Intent(FiveDigitLevel.this, FiveDigitLevel.class);
-                startActivity(i);
+                if (reset.isEnabled()) {
+                    numOfResetClicks++;
+                    Log.d("Click:","Restarted Level " + numOfResetClicks);
+                    Intent i = new Intent(FiveDigitLevel.this, FiveDigitLevel.class);
+                    startActivity(i);
+                }
+                if (numOfResetClicks >= 3) {
+                    reset.setEnabled(false);
+                }
             }
         });
-        ImageButton quit = findViewById(R.id.quit_button);
+        quit = findViewById(R.id.quit_button);
         quit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -43,10 +52,15 @@ public class FiveDigitLevel extends AppCompatActivity {
         enter = findViewById(R.id.enter_button);
         enter.setEnabled(false);
         enter.setOnClickListener(new View.OnClickListener() {
+            int numOfEnterClicks = 0;
             @Override
             public void onClick(View v) {
                 if (enter.isEnabled()) {
-                    Log.d("Click:", "Entered Code");
+                    numOfEnterClicks++;
+                    Log.d("Click:", "Entered Code " + numOfEnterClicks);
+                }
+                if (numOfEnterClicks >= 30) {
+                    enter.setEnabled(false);
                 }
             }
         });
