@@ -17,7 +17,7 @@ public class HomePage extends AppCompatActivity {
         start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("Click:","Start Game");
+                Log.d("Click:","Started Game");
                 Intent i = new Intent(HomePage.this, Levels_Menu.class);
                 startActivity(i);
             }
