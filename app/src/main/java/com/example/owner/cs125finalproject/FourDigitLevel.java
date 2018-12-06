@@ -25,18 +25,11 @@ public class FourDigitLevel extends AppCompatActivity {
         setContentView(R.layout.activity_four_digit_level);
         reset =  findViewById(R.id.reset_button);
         reset.setOnClickListener(new View.OnClickListener() {
-            int numOfResetClicks = 0;
             @Override
             public void onClick(View v) {
-                if (reset.isEnabled()) {
-                    numOfResetClicks++;
-                    Log.d("Click:","Restarted Level " + numOfResetClicks);
-                    Intent i = new Intent(FourDigitLevel.this, FourDigitLevel.class);
-                    startActivity(i);
-                }
-                if (numOfResetClicks >= 3) {
-                    reset.setEnabled(false);
-                }
+                Log.d("Click:","Restarted Level");
+                Intent i = new Intent(FourDigitLevel.this, FourDigitLevel.class);
+                startActivity(i);
             }
         });
         quit = findViewById(R.id.quit_button);
