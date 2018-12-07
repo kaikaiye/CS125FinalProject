@@ -1,5 +1,6 @@
 package com.example.owner.cs125finalproject;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -9,7 +10,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -18,11 +22,8 @@ public class FiveDigitLevel extends AppCompatActivity {
     private static List<Integer> listOfDigits = Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8, 9);
     private int code;
     private ImageButton enter;
-    private EditText firstDigit;
-    private EditText secondDigit;
-    private EditText thirdDigit;
-    private EditText fourthDigit;
-    private EditText fifthDigit;
+    private EditText inputCode;
+    private ArrayList<String> submissions;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +32,10 @@ public class FiveDigitLevel extends AppCompatActivity {
         Collections.shuffle(listOfDigits);
         code = 10000*listOfDigits.get(0) + 1000*listOfDigits.get(1)
                     + 100*listOfDigits.get(2) + 10*listOfDigits.get(3) + listOfDigits.get(4);
+        inputCode = findViewById(R.id.inputCode);
+        inputCode.addTextChangedListener(digitInputWatcher);
+        submissions = new ArrayList<>();
+
         ImageButton reset =  findViewById(R.id.reset_button);
         reset.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,6 +61,17 @@ public class FiveDigitLevel extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (enter.isEnabled()) {
+                    if (submissions.contains(inputCode.getText().toString())) {
+                        Context context = getApplicationContext();
+                        CharSequence text = "This submission already exists!";
+                        int duration = Toast.LENGTH_SHORT;
+
+                        Toast toast = Toast.makeText(context, text, duration);
+                        toast.show();
+                        return;
+                    }
+                    addToSubmissions(inputCode.getText().toString());
+                    displaySubmission();
                     numOfEnterClicks++;
                     Log.d("Click:", "Entered Code " + numOfEnterClicks);
                 }
@@ -64,17 +80,6 @@ public class FiveDigitLevel extends AppCompatActivity {
                 }
             }
         });
-        firstDigit = findViewById(R.id.first_digit_code);
-        secondDigit = findViewById(R.id.second_digit_code);
-        thirdDigit = findViewById(R.id.third_digit_code);
-        fourthDigit = findViewById(R.id.fourth_digit_code);
-        fifthDigit = findViewById(R.id.fifth_digit_code);
-
-        firstDigit.addTextChangedListener(digitInputWatcher);
-        secondDigit.addTextChangedListener(digitInputWatcher);
-        thirdDigit.addTextChangedListener(digitInputWatcher);
-        fourthDigit.addTextChangedListener(digitInputWatcher);
-        fifthDigit.addTextChangedListener(digitInputWatcher);
     }
     private TextWatcher digitInputWatcher = new TextWatcher() {
         @Override
@@ -93,16 +98,28 @@ public class FiveDigitLevel extends AppCompatActivity {
         }
     };
     private void checkInputFields() {
-        String firstDigitAsString = firstDigit.getText().toString();
-        String secondDigitAsString = secondDigit.getText().toString();
-        String thirdDigitAsString = thirdDigit.getText().toString();
-        String fourthDigitAsString = fourthDigit.getText().toString();
-        String fifthDigitAsString = fifthDigit.getText().toString();
-        if (firstDigitAsString.isEmpty() || secondDigitAsString.isEmpty()
-                || thirdDigitAsString.isEmpty() || fourthDigitAsString.isEmpty() || fifthDigitAsString.isEmpty()) {
+        String inputCodeAsString = inputCode.getText().toString();
+        if (inputCodeAsString.length() < 5) {
             enter.setEnabled(false);
         } else {
             enter.setEnabled(true);
         }
+    }
+    private void displaySubmission() {
+        TextView submissionsBox = findViewById(R.id.submissions_box);
+        String lastTenSubmissions = "";
+        int endIndex;
+        if (submissions.size() > 10) {
+            endIndex = submissions.size() - 10;
+        } else {
+            endIndex = 0;
+        }
+        for (int i = submissions.size() - 1; i >= endIndex; i--) {
+            lastTenSubmissions += submissions.get(i) + "\n";
+        }
+        submissionsBox.setText(lastTenSubmissions);
+    }
+    private void addToSubmissions(String value) {
+        submissions.add(value);
     }
 }
