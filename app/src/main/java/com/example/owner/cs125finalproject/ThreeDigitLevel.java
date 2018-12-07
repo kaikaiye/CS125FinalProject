@@ -11,19 +11,25 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 public class ThreeDigitLevel extends AppCompatActivity {
+    private static List<Integer> listOfDigits = Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8, 9);
+    private int code;
     private EditText firstDigit;
     private EditText secondDigit;
     private EditText thirdDigit;
-    private ImageButton reset;
-    private ImageButton quit;
     private ImageButton enter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_three_digit_level);
-        reset = findViewById(R.id.reset_button);
+        Collections.shuffle(listOfDigits);
+        code = 100*listOfDigits.get(0) + 10*listOfDigits.get(1) + listOfDigits.get(2);
+        ImageButton reset = findViewById(R.id.reset_button);
         reset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -32,7 +38,7 @@ public class ThreeDigitLevel extends AppCompatActivity {
                 startActivity(i);
             }
         });
-        quit = findViewById(R.id.quit_button);
+        ImageButton quit = findViewById(R.id.quit_button);
         quit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,5 +94,8 @@ public class ThreeDigitLevel extends AppCompatActivity {
         } else {
             enter.setEnabled(true);
         }
+    }
+    private void displaySubmission() {
+
     }
 }

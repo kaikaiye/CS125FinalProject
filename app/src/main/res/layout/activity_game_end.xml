@@ -83,6 +83,7 @@
 
     <RatingBar
         android:id="@+id/rating"
+        style="?android:attr/ratingBarStyleIndicator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@+id/restart_button"

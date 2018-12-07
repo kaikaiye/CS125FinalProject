@@ -10,20 +10,26 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 public class FourDigitLevel extends AppCompatActivity {
+    private static List<Integer> listOfDigits = Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8, 9);
+    private int code;
     private ImageButton enter;
     private EditText firstDigit;
     private EditText secondDigit;
     private EditText thirdDigit;
     private EditText fourthDigit;
-    private ImageButton reset;
-    private ImageButton quit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_four_digit_level);
-        reset =  findViewById(R.id.reset_button);
+        Collections.shuffle(listOfDigits);
+        code = 1000*listOfDigits.get(0) + 100*listOfDigits.get(1) + 10*listOfDigits.get(2) + listOfDigits.get(3);
+        ImageButton reset =  findViewById(R.id.reset_button);
         reset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -32,7 +38,7 @@ public class FourDigitLevel extends AppCompatActivity {
                 startActivity(i);
             }
         });
-        quit = findViewById(R.id.quit_button);
+        ImageButton quit = findViewById(R.id.quit_button);
         quit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
