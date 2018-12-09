@@ -22,6 +22,9 @@
         <activity android:name=".GameEndLoss"></activity>
         <activity android:name=".GameEndWin"></activity>
         <activity android:name=".Instructions"></activity>
+        <activity android:name=".ThreeDigitLevelWithTimer"></activity>
+        <activity android:name=".FourDigitLevelWithTimer"></activity>
+        <activity android:name=".FiveDigitLevelWithTimer"></activity>
 
         <meta-data
             android:name="preloaded_fonts"
