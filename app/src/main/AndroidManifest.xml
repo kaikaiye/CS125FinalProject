@@ -19,8 +19,13 @@
         <activity android:name=".ThreeDigitLevel"></activity>
         <activity android:name=".FourDigitLevel"></activity>
         <activity android:name=".FiveDigitLevel"></activity>
-        <activity android:name=".GameEnd"></activity>
+        <activity android:name=".GameEndLoss"></activity>
+        <activity android:name=".GameEndWin"></activity>
         <activity android:name=".Instructions"></activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

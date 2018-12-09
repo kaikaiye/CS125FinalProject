@@ -24,6 +24,7 @@ public class FiveDigitLevel extends AppCompatActivity {
     private ImageButton enter;
     private EditText inputCode;
     private ArrayList<String> submissions;
+    private int score;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,9 +75,14 @@ public class FiveDigitLevel extends AppCompatActivity {
                     displaySubmission();
                     numOfEnterClicks++;
                     Log.d("Click:", "Entered Code " + numOfEnterClicks);
+                    Log.d("Click:", ((Integer) code).toString());
+                    if (Integer.parseInt(inputCode.getText().toString()) == code) {
+                        endGameWin(numOfEnterClicks);
+                    }
                 }
                 if (numOfEnterClicks >= 30) {
                     enter.setEnabled(false);
+                    endGameLoss();
                 }
             }
         });
@@ -121,5 +127,25 @@ public class FiveDigitLevel extends AppCompatActivity {
     }
     private void addToSubmissions(String value) {
         submissions.add(value);
+    }
+    private void endGameLoss() {
+        Intent i = new Intent(FiveDigitLevel.this, GameEndLoss.class);
+        startActivity(i);
+    }
+    private void endGameWin(int numOfSubmissions) {
+        if (numOfSubmissions <= 12) {
+            score = 100;
+        } else if (numOfSubmissions <= 17) {
+            score = 80;
+        } else if (numOfSubmissions <= 22) {
+            score = 60;
+        } else if (numOfSubmissions <= 27) {
+            score = 40;
+        } else {
+            score = 20;
+        }
+        Intent i = new Intent(FiveDigitLevel.this, GameEndWin.class);
+        i.putExtra("score", score);
+        startActivity(i);
     }
 }

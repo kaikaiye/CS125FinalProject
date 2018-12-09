@@ -8,18 +8,18 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
-public class GameEnd extends AppCompatActivity {
+public class GameEndLoss extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_game_end);
+        setContentView(R.layout.activity_game_end_loss);
         Button main_menu = (Button) findViewById(R.id.main_menu_button);
         main_menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.d("Click:","Main Menu");
-                Intent i = new Intent(GameEnd.this, HomePage.class);
+                Intent i = new Intent(GameEndLoss.this, HomePage.class);
                 startActivity(i);
             }
         });
@@ -28,9 +28,10 @@ public class GameEnd extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d("Click:","Restart of game after game ended");
-                Intent i = new Intent(GameEnd.this, Levels_Menu.class);
+                Intent i = new Intent(GameEndLoss.this, Levels_Menu.class);
                 startActivity(i);
             }
         });
+
     }
 }

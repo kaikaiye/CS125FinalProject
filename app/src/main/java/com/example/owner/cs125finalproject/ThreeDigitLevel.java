@@ -2,7 +2,6 @@ package com.example.owner.cs125finalproject;
 
 import android.content.Context;
 import android.content.Intent;
-import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -25,6 +24,7 @@ public class ThreeDigitLevel extends AppCompatActivity {
     private EditText inputCode;
     private ImageButton enter;
     private ArrayList<String> submissions;
+    private int score;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,9 +74,14 @@ public class ThreeDigitLevel extends AppCompatActivity {
                     displaySubmission();
                     numOfEnterClicks++;
                     Log.d("Click:", "Entered Code " + numOfEnterClicks);
+                    Log.d("Click:", ((Integer) code).toString());
+                    if (Integer.parseInt(inputCode.getText().toString()) == code) {
+                        endGameWin(numOfEnterClicks);
+                    }
                 }
                 if (numOfEnterClicks >= 30) {
                     enter.setEnabled(false);
+                    endGameLoss();
                 }
             }
         });
@@ -121,5 +126,25 @@ public class ThreeDigitLevel extends AppCompatActivity {
     }
     private void addToSubmissions(String value) {
         submissions.add(value);
+    }
+    private void endGameLoss() {
+        Intent i = new Intent(ThreeDigitLevel.this, GameEndLoss.class);
+        startActivity(i);
+    }
+    private void endGameWin(int numOfSubmissions) {
+        if (numOfSubmissions <= 10) {
+            score = 100;
+        } else if (numOfSubmissions <= 15) {
+            score = 80;
+        } else if (numOfSubmissions <= 20) {
+            score = 60;
+        } else if (numOfSubmissions <= 25) {
+            score = 40;
+        } else {
+            score = 20;
+        }
+        Intent i = new Intent(ThreeDigitLevel.this, GameEndWin.class);
+        i.putExtra("score", score);
+        startActivity(i);
     }
 }
