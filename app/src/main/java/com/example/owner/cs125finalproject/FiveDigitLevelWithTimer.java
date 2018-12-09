@@ -29,7 +29,7 @@ public class FiveDigitLevelWithTimer extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_five_digit_level);
+        setContentView(R.layout.activity_five_digit_level_timer);
         Collections.shuffle(listOfDigits);
         code = listOfDigits.get(0) + listOfDigits.get(1) + listOfDigits.get(2) + listOfDigits.get(3) + listOfDigits.get(4);
         inputCode = findViewById(R.id.inputCode);
