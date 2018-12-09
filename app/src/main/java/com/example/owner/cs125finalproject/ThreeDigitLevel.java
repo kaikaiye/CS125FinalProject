@@ -28,7 +28,7 @@ public class ThreeDigitLevel extends AppCompatActivity {
     private EditText inputCode;
     private ImageButton enter;
     private ArrayList<String> submissions;
-    private Map<Character, String> bullsAndCows;
+    private ArrayList<Character> isBull;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +39,7 @@ public class ThreeDigitLevel extends AppCompatActivity {
         inputCode = findViewById(R.id.inputCode);
         inputCode.addTextChangedListener(digitInputWatcher);
         submissions = new ArrayList<>();
-        bullsAndCows = new HashMap<>();
+        isBull = new ArrayList<>();
 
         ImageButton reset = findViewById(R.id.reset_button);
         reset.setOnClickListener(new View.OnClickListener() {
@@ -90,12 +90,13 @@ public class ThreeDigitLevel extends AppCompatActivity {
                         enter.setEnabled(false);
                         endGameWin(numOfEnterClicks);
                     } else {
+                        TextView bulls
+                                = findViewById(R.id.num_of_bulls);
+                        String numOfBullAsString = ((Integer) getNumOfBulls()).toString();
+                        bulls.setText(numOfBullAsString);
                         TextView cows = findViewById(R.id.num_of_cows);
                         String numOfCowsAsString = ((Integer) getNumOfCows()).toString();
                         cows.setText(numOfCowsAsString);
-                        TextView bulls = findViewById(R.id.num_of_bulls);
-                        String numOfBullAsString = ((Integer) getNumOfBulls()).toString();
-                        bulls.setText(numOfBullAsString);
                     }
                 }
                 if (numOfEnterClicks >= 30) {
@@ -186,22 +187,24 @@ public class ThreeDigitLevel extends AppCompatActivity {
         startActivity(i);
     }
     private int getNumOfCows() {
-        // if a key has a value that is a bull, do not count
-        return 0;
+        List<Character> codeAsArray = Arrays.asList(code.charAt(0), code.charAt(1), code.charAt(2));
+        int numOfCows = 0;
+        for (int i = 0; i < code.length(); i++) {
+            if (codeAsArray.contains(inputCode.getText().toString().charAt(i))
+                    && !isBull.contains(inputCode.getText().toString().charAt(i))) {
+                numOfCows++;
+            }
+        }
+        isBull.removeAll(isBull);
+        return numOfCows;
     }
     private int getNumOfBulls() {
         int numOfBulls = 0;
-        if (code.charAt(0) == inputCode.getText().toString().charAt(0)) {
-            numOfBulls++;
-            bullsAndCows.put(code.charAt(0), "bull");
-        }
-        if (code.charAt(1) == inputCode.getText().toString().charAt(1)) {
-            numOfBulls++;
-            bullsAndCows.put(code.charAt(1), "bull");
-        }
-        if (code.charAt(2) == inputCode.getText().toString().charAt(2)) {
-            numOfBulls++;
-            bullsAndCows.put(code.charAt(2), "bull");
+        for (int i = 0; i < code.length(); i++) {
+            if (code.charAt(i) == inputCode.getText().toString().charAt(i)) {
+                numOfBulls++;
+                isBull.add(inputCode.getText().toString().charAt(i));
+            }
         }
         return numOfBulls;
     }

@@ -38,7 +38,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
         android:gravity="center_vertical|center_horizontal"
-        android:text="Yet no one cares!"
+        android:text="Congrats!"
         android:textColor="@android:color/holo_red_dark"
         android:textSize="24sp"
         android:textStyle="bold"
