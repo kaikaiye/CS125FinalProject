@@ -65,9 +65,13 @@ public class FiveDigitLevel extends AppCompatActivity {
             public void onClick(View v) {
                 if (enter.isEnabled()) {
                     if (submissions.contains(inputCode.getText().toString())) {
-                        /* Source for making a toast:
-                           https://developer.android.com/guide/topics/ui/notifiers/toasts
-                         */
+                        /*************************************************
+                         * Title: Toasts Overview
+                         * Author: N/A
+                         * Date: May 23, 2018
+                         * Code version: N/A
+                         * Availability: https://developer.android.com/guide/topics/ui/notifiers/toasts
+                         **************************************************/
                         Context context = getApplicationContext();
                         CharSequence text = "This submission already exists!";
                         int duration = Toast.LENGTH_SHORT;
@@ -99,9 +103,15 @@ public class FiveDigitLevel extends AppCompatActivity {
             }
         });
     }
-    /* Source for allowing input to dictate the enabling/disabling of submission button:
-       https://stackoverflow.com/questions/8543449/how-to-use-the-textwatcher-class-in-android
-     */
+    /*************************************************
+     * Title: How to use the TextWatcher class in Android?
+     * Author: Dinesh Prajapati
+     * Edited by: Suragch
+     * Date: December 17, 2011
+     * Edit Date: November 13, 2017
+     * Code version: N/A
+     * Availability: https://stackoverflow.com/questions/8543449/how-to-use-the-textwatcher-class-in-android
+     **************************************************/
     private TextWatcher digitInputWatcher = new TextWatcher() {
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
