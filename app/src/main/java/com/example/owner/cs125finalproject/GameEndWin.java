@@ -38,6 +38,14 @@ public class GameEndWin extends AppCompatActivity {
         TextView totalScore = findViewById(R.id.total_score);
         totalScore.setText(scoreReceivedFromLevel);
     }
+    /*************************************************
+     * Title: Disable back button in android
+     * Author: Gopinath
+     * Date: January 24, 2011
+     * Edit Date: December 13, 2017
+     * Code version: N/A
+     * Availability: https://stackoverflow.com/questions/4779954/disable-back-button-in-android
+     **************************************************/
     public void onBackPressed() {
         Intent i = new Intent(GameEndWin.this, Levels_Menu.class);
         startActivity(i);
