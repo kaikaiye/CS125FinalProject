@@ -170,6 +170,15 @@ public class FourDigitLevel extends AppCompatActivity {
         } else {
             score = 20;
         }
+        /*************************************************
+         * Title: How to pass integer from one Activity to another?
+         * Author: Daniel Nyamasyo
+         * Edited by: Benny
+         * Date: August 28, 2016
+         * Edit Date: November 12, 2017
+         * Code version: N/A
+         * Availability: https://stackoverflow.com/questions/7074097/how-to-pass-integer-from-one-activity-to-another/39187899
+         **************************************************/
         Intent i = new Intent(FourDigitLevel.this, GameEndWin.class);
         i.putExtra("score", score);
         startActivity(i);
