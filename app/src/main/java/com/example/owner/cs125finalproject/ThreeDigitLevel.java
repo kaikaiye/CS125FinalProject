@@ -13,28 +13,33 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ThreeDigitLevel extends AppCompatActivity {
-    private static List<Integer> listOfDigits = Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8, 9);
-    private int code;
+    private static List<String> listOfDigits = Arrays.asList("0", "1", "2", "3", "4", "5", "6", "7", "8", "9");
+    private String code;
     private EditText inputCode;
     private ImageButton enter;
     private ArrayList<String> submissions;
-    private int score;
+    private Map<Character, String> bullsAndCows;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_three_digit_level);
         Collections.shuffle(listOfDigits);
-        code = 100*listOfDigits.get(0) + 10*listOfDigits.get(1) + listOfDigits.get(2);
+        code = listOfDigits.get(0) + listOfDigits.get(1) + listOfDigits.get(2);
         inputCode = findViewById(R.id.inputCode);
         inputCode.addTextChangedListener(digitInputWatcher);
         submissions = new ArrayList<>();
+        bullsAndCows = new HashMap<>();
 
         ImageButton reset = findViewById(R.id.reset_button);
         reset.setOnClickListener(new View.OnClickListener() {
@@ -65,7 +70,6 @@ public class ThreeDigitLevel extends AppCompatActivity {
                         Context context = getApplicationContext();
                         CharSequence text = "This submission already exists!";
                         int duration = Toast.LENGTH_SHORT;
-
                         Toast toast = Toast.makeText(context, text, duration);
                         toast.show();
                         return;
@@ -74,9 +78,16 @@ public class ThreeDigitLevel extends AppCompatActivity {
                     displaySubmission();
                     numOfEnterClicks++;
                     Log.d("Click:", "Entered Code " + numOfEnterClicks);
-                    Log.d("Click:", ((Integer) code).toString());
-                    if (Integer.parseInt(inputCode.getText().toString()) == code) {
+                    Log.d("Click:", code);
+                    if (inputCode.getText().toString().equals(code)) {
                         endGameWin(numOfEnterClicks);
+                    } else {
+                        TextView cows = findViewById(R.id.num_of_cows);
+                        String numOfCowsAsString = ((Integer) getNumOfCows()).toString();
+                        cows.setText(numOfCowsAsString);
+                        TextView bulls = findViewById(R.id.num_of_bulls);
+                        String numOfBullAsString = ((Integer) getNumOfBulls()).toString();
+                        bulls.setText(numOfBullAsString);
                     }
                 }
                 if (numOfEnterClicks >= 30) {
@@ -132,6 +143,7 @@ public class ThreeDigitLevel extends AppCompatActivity {
         startActivity(i);
     }
     private void endGameWin(int numOfSubmissions) {
+        int score;
         if (numOfSubmissions <= 10) {
             score = 100;
         } else if (numOfSubmissions <= 15) {
@@ -146,5 +158,25 @@ public class ThreeDigitLevel extends AppCompatActivity {
         Intent i = new Intent(ThreeDigitLevel.this, GameEndWin.class);
         i.putExtra("score", score);
         startActivity(i);
+    }
+    private int getNumOfCows() {
+        // if a key has a value that is a bull, do not count
+        return 0;
+    }
+    private int getNumOfBulls() {
+        int numOfBulls = 0;
+        if (code.charAt(0) == inputCode.getText().toString().charAt(0)) {
+            numOfBulls++;
+            bullsAndCows.put(code.charAt(0), "bull");
+        }
+        if (code.charAt(1) == inputCode.getText().toString().charAt(1)) {
+            numOfBulls++;
+            bullsAndCows.put(code.charAt(1), "bull");
+        }
+        if (code.charAt(2) == inputCode.getText().toString().charAt(2)) {
+            numOfBulls++;
+            bullsAndCows.put(code.charAt(2), "bull");
+        }
+        return numOfBulls;
     }
 }
