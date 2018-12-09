@@ -79,6 +79,7 @@ public class FiveDigitLevel extends AppCompatActivity {
                     Log.d("Click:", "Entered Code " + numOfEnterClicks);
                     Log.d("Click:", code);
                     if (inputCode.getText().toString().equals(code)) {
+                        enter.setEnabled(false);
                         endGameWin(numOfEnterClicks);
                     } else {
                         TextView cows = findViewById(R.id.num_of_cows);
