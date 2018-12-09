@@ -67,6 +67,9 @@ public class ThreeDigitLevel extends AppCompatActivity {
             public void onClick(View v) {
                 if (enter.isEnabled()) {
                     if (submissions.contains(inputCode.getText().toString())) {
+                        /* Source for making a toast:
+                           https://developer.android.com/guide/topics/ui/notifiers/toasts
+                         */
                         Context context = getApplicationContext();
                         CharSequence text = "This submission already exists!";
                         int duration = Toast.LENGTH_SHORT;
@@ -98,6 +101,9 @@ public class ThreeDigitLevel extends AppCompatActivity {
             }
         });
     }
+    /* Source for allowing input to dictate the enabling/disabling of submission button:
+       https://stackoverflow.com/questions/8543449/how-to-use-the-textwatcher-class-in-android
+     */
     private TextWatcher digitInputWatcher = new TextWatcher() {
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
