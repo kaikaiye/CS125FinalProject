@@ -32,6 +32,9 @@ public class GameEndLoss extends AppCompatActivity {
                 startActivity(i);
             }
         });
-
+    }
+    public void onBackPressed() {
+        Intent i = new Intent(GameEndLoss.this, Levels_Menu.class);
+        startActivity(i);
     }
 }

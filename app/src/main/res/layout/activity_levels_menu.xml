@@ -8,8 +8,8 @@
 
     <TextView
         android:id="@+id/levels_title"
-        android:layout_width="178dp"
-        android:layout_height="51dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="36dp"
@@ -18,7 +18,9 @@
         android:layout_marginBottom="8dp"
         android:gravity="center_horizontal"
         android:text="LEVELS"
-        android:textSize="36sp"
+        android:textColor="@android:color/black"
+        android:textSize="45sp"
+        app:fontFamily="@font/trade_winds"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"

@@ -129,11 +129,27 @@ public class FourDigitLevel extends AppCompatActivity {
         }
     };
     private void checkInputFields() {
-        String inputCodeAsString = inputCode.getText().toString();
-        if (inputCodeAsString.length() < 4) {
+        char[] inputCodeAsArray = inputCode.getText().toString().toCharArray();
+        if (inputCodeAsArray.length < 4) {
             enter.setEnabled(false);
         } else {
             enter.setEnabled(true);
+        }
+        for (int i = 0; i < inputCodeAsArray.length; i++) {
+            for (int j = 0; j < inputCodeAsArray.length; j++) {
+                if (i == j) {
+                    continue;
+                } else {
+                    if (inputCodeAsArray[i] == inputCodeAsArray[j]) {
+                        Context context = getApplicationContext();
+                        CharSequence text = "You have a repeating digit in your input!";
+                        int duration = Toast.LENGTH_SHORT;
+                        Toast toast = Toast.makeText(context, text, duration);
+                        toast.show();
+                        enter.setEnabled(false);
+                    }
+                }
+            }
         }
     }
     private void displaySubmission() {

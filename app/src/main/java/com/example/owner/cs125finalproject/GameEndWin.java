@@ -38,4 +38,8 @@ public class GameEndWin extends AppCompatActivity {
         TextView totalScore = findViewById(R.id.total_score);
         totalScore.setText(scoreReceivedFromLevel);
     }
+    public void onBackPressed() {
+        Intent i = new Intent(GameEndWin.this, Levels_Menu.class);
+        startActivity(i);
+    }
 }
