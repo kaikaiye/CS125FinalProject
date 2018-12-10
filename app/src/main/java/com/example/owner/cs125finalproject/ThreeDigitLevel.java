@@ -2,6 +2,8 @@ package com.example.owner.cs125finalproject;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.AudioManager;
+import android.media.SoundPool;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -18,9 +20,7 @@ import org.w3c.dom.Text;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class ThreeDigitLevel extends AppCompatActivity {
     private static List<String> listOfDigits = Arrays.asList("0", "1", "2", "3", "4", "5", "6", "7", "8", "9");
@@ -40,6 +40,7 @@ public class ThreeDigitLevel extends AppCompatActivity {
         inputCode.addTextChangedListener(digitInputWatcher);
         submissions = new ArrayList<>();
         isBull = new ArrayList<>();
+        SoundPool soundPool = new SoundPool(2, AudioManager.STREAM_MUSIC, 0);
 
         ImageButton reset = findViewById(R.id.reset_button);
         reset.setOnClickListener(new View.OnClickListener() {
