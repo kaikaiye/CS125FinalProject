@@ -282,4 +282,8 @@ public class ThreeDigitLevelWithTimer extends AppCompatActivity {
         }
         return numOfBulls;
     }
+    protected void onStop() {
+        super.onStop();
+        timer.cancel();
+    }
 }
