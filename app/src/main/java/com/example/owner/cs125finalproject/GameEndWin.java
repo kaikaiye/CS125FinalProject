@@ -12,14 +12,13 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class GameEndWin extends AppCompatActivity {
-    private SoundPool soundPool;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_end_win);
         Button main_menu = findViewById(R.id.main_menu_button);
-        soundPool = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
+        SoundPool soundPool = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
         int winningSound = soundPool.load(this, R.raw.winningsound, 1);
         soundPool.play(winningSound, 1, 1, 0 ,1, 1);
 
