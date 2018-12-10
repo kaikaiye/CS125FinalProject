@@ -1,6 +1,8 @@
 package com.example.owner.cs125finalproject;
 
 import android.content.Intent;
+import android.media.AudioManager;
+import android.media.SoundPool;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -9,12 +11,16 @@ import android.widget.Button;
 import android.widget.ImageButton;
 
 public class GameEndLoss extends AppCompatActivity {
-
+    private SoundPool soundPool;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_end_loss);
         Button main_menu = (Button) findViewById(R.id.main_menu_button);
+        soundPool = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
+        int losingsound = soundPool.load(this, R.raw.losingsound, 1);
+        soundPool.play(losingsound, 1, 1, 0 ,1, 1);
+
         main_menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

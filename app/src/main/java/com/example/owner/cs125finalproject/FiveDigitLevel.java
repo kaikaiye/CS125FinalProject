@@ -2,6 +2,8 @@ package com.example.owner.cs125finalproject;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.AudioManager;
+import android.media.SoundPool;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
@@ -27,6 +29,9 @@ public class FiveDigitLevel extends AppCompatActivity {
     private EditText inputCode;
     private ArrayList<String> submissions;
     private ArrayList<Character> isBull;
+    private int bullSound;
+    private int cowbellSound;
+    private SoundPool soundPool;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +43,9 @@ public class FiveDigitLevel extends AppCompatActivity {
         inputCode.addTextChangedListener(digitInputWatcher);
         submissions = new ArrayList<>();
         isBull = new ArrayList<>();
+        soundPool = new SoundPool(2,AudioManager.STREAM_MUSIC, 0);
+        bullSound = soundPool.load(this, R.raw.bullsound, 1);
+        cowbellSound = soundPool.load(this, R.raw.cowbellsound, 1);
 
         ImageButton reset =  findViewById(R.id.reset_button);
         reset.setOnClickListener(new View.OnClickListener() {
@@ -208,6 +216,9 @@ public class FiveDigitLevel extends AppCompatActivity {
                 numOfCows++;
             }
         }
+        if (numOfCows > 0) {
+            soundPool.play(cowbellSound, 1, 1, 0, 0, 1);
+        }
         isBull.removeAll(isBull);
         return numOfCows;
     }
@@ -218,6 +229,9 @@ public class FiveDigitLevel extends AppCompatActivity {
                 numOfBulls++;
                 isBull.add(inputCode.getText().toString().charAt(i));
             }
+        }
+        if (numOfBulls > 0) {
+            soundPool.play(bullSound, 1, 1, 0, 0, 1);
         }
         return numOfBulls;
     }

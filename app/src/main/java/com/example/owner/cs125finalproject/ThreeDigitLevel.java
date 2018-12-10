@@ -15,8 +15,6 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -29,6 +27,9 @@ public class ThreeDigitLevel extends AppCompatActivity {
     private ImageButton enter;
     private ArrayList<String> submissions;
     private ArrayList<Character> isBull;
+    private int bullSound;
+    private int cowbellSound;
+    private SoundPool soundPool;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +41,9 @@ public class ThreeDigitLevel extends AppCompatActivity {
         inputCode.addTextChangedListener(digitInputWatcher);
         submissions = new ArrayList<>();
         isBull = new ArrayList<>();
-        SoundPool soundPool = new SoundPool(2, AudioManager.STREAM_MUSIC, 0);
+        soundPool = new SoundPool(2, AudioManager.STREAM_MUSIC, 0);
+        bullSound = soundPool.load(this, R.raw.bullsound, 1);
+        cowbellSound = soundPool.load(this, R.raw.cowbellsound, 1);
 
         ImageButton reset = findViewById(R.id.reset_button);
         reset.setOnClickListener(new View.OnClickListener() {
@@ -91,8 +94,7 @@ public class ThreeDigitLevel extends AppCompatActivity {
                         enter.setEnabled(false);
                         endGameWin(numOfEnterClicks);
                     } else {
-                        TextView bulls
-                                = findViewById(R.id.num_of_bulls);
+                        TextView bulls = findViewById(R.id.num_of_bulls);
                         String numOfBullAsString = ((Integer) getNumOfBulls()).toString();
                         bulls.setText(numOfBullAsString);
                         TextView cows = findViewById(R.id.num_of_cows);
@@ -212,6 +214,9 @@ public class ThreeDigitLevel extends AppCompatActivity {
                 numOfCows++;
             }
         }
+        if (numOfCows > 0) {
+            soundPool.play(cowbellSound, 1, 1, 0, 0, 1);
+        }
         isBull.removeAll(isBull);
         return numOfCows;
     }
@@ -222,6 +227,9 @@ public class ThreeDigitLevel extends AppCompatActivity {
                 numOfBulls++;
                 isBull.add(inputCode.getText().toString().charAt(i));
             }
+        }
+        if (numOfBulls > 0) {
+            soundPool.play(bullSound, 1, 1, 0, 0, 1);
         }
         return numOfBulls;
     }
