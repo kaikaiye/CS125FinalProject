@@ -21,7 +21,7 @@ public class GameEndWin extends AppCompatActivity {
         Button main_menu = findViewById(R.id.main_menu_button);
         MediaPlayer winningSound = MediaPlayer.create(this, R.raw.winningsound);
         winningSound.start();
-        
+
         main_menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
