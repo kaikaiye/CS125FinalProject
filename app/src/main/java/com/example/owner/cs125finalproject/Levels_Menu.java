@@ -27,7 +27,7 @@ public class Levels_Menu extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d("Click:","Start of Level 2");
-                Intent i = new Intent(Levels_Menu.this, ThreeDigitLevel.class);
+                Intent i = new Intent(Levels_Menu.this, ThreeDigitLevelWithTimer.class);
                 startActivity(i);
             }
         });
@@ -45,7 +45,7 @@ public class Levels_Menu extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d("Click:","Start of Level 4");
-                Intent i = new Intent(Levels_Menu.this, FourDigitLevel.class);
+                Intent i = new Intent(Levels_Menu.this, FourDigitLevelWithTimer.class);
                 startActivity(i);
             }
         });
@@ -63,7 +63,7 @@ public class Levels_Menu extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d("Click:","Start of Challenge Level");
-                Intent i = new Intent(Levels_Menu.this, FiveDigitLevel.class);
+                Intent i = new Intent(Levels_Menu.this, FiveDigitLevelWithTimer.class);
                 startActivity(i);
             }
         });

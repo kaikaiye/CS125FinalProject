@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.os.CountDownTimer;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -25,6 +26,8 @@ public class FourDigitLevelWithTimer extends AppCompatActivity {
     private EditText inputCode;
     private ArrayList<String> submissions;
     private ArrayList<Character> isBull;
+    private int counter = 240;
+    TextView tv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +39,29 @@ public class FourDigitLevelWithTimer extends AppCompatActivity {
         inputCode.addTextChangedListener(digitInputWatcher);
         submissions = new ArrayList<>();
         isBull = new ArrayList<>();
+        tv = (TextView) findViewById(R.id.fourdigtimer);
+        new CountDownTimer(240000, 1000) {
+            public void onTick(long millisUntilFinished) {
+                String countText = String.valueOf(counter / 60);
+                countText += ":";
+                if ((counter % 60) < 10) {
+                    countText += String.valueOf(0);
+                    countText += String.valueOf(counter % 60);
+                } else {
+                    countText += counter % 60;
+                }
+                tv.setText(countText);
+                counter--;
+            }
+
+            @Override
+            public void onFinish() {
+                tv.setText("Times Up");
+                Log.d("end", "times out");
+                Intent i = new Intent(FourDigitLevelWithTimer.this, GameEndLoss.class);
+                startActivity(i);
+            }
+        }.start();
 
         ImageButton reset =  findViewById(R.id.reset_button);
         reset.setOnClickListener(new View.OnClickListener() {
