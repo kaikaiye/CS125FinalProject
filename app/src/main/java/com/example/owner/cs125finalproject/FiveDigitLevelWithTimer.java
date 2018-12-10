@@ -29,10 +29,11 @@ public class FiveDigitLevelWithTimer extends AppCompatActivity {
     private ArrayList<String> submissions;
     private ArrayList<Character> isBull;
     private int counter = 120;
-    TextView tv;
+    private TextView tv;
     private int bullSound;
     private int cowbellSound;
     private SoundPool soundPool;
+    private CountDownTimer timer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +68,7 @@ public class FiveDigitLevelWithTimer extends AppCompatActivity {
          * Code version: N/A
          * Availability: https://abhiandroid.com/ui/countdown-timer
          **************************************************/
-        new CountDownTimer(120000, 1000) {
+        timer = new CountDownTimer(120000, 1000) {
             public void onTick(long millisUntilFinished) {
                 String countText = String.valueOf(counter / 60);
                 countText += ":";
@@ -220,6 +221,7 @@ public class FiveDigitLevelWithTimer extends AppCompatActivity {
         submissions.add(value);
     }
     private void endGameLoss() {
+        timer.cancel();
         Intent i = new Intent(FiveDigitLevelWithTimer.this, GameEndLoss.class);
         startActivity(i);
     }
@@ -236,6 +238,7 @@ public class FiveDigitLevelWithTimer extends AppCompatActivity {
         } else {
             score = 20;
         }
+        timer.cancel();
         /*************************************************
          * Title: How to pass integer from one Activity to another?
          * Author: Daniel Nyamasyo
