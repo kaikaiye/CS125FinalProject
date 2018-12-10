@@ -40,6 +40,16 @@ public class ThreeDigitLevelWithTimer extends AppCompatActivity {
         submissions = new ArrayList<>();
         isBull = new ArrayList<>();
         tv = (TextView) findViewById(R.id.threedigtimer);
+
+        /*************************************************
+         * Title: CountDownTimer Tutorial With Example In Android Studio
+         * Author: N/A
+         * Edited by: N/A
+         * Date: N/A
+         * Edit Date: N/A
+         * Code version: N/A
+         * Availability: https://abhiandroid.com/ui/countdown-timer
+         **************************************************/
         new CountDownTimer(300000, 1000) {
             public void onTick(long millisUntilFinished) {
                 String countText = String.valueOf(counter / 60);
