@@ -86,6 +86,7 @@ public class FiveDigitLevelWithTimer extends AppCompatActivity {
             public void onFinish() {
                 tv.setText("Times Up");
                 Log.d("end", "times out");
+                finish();
                 Intent i = new Intent(FiveDigitLevelWithTimer.this, GameEndLoss.class);
                 startActivity(i);
             }
@@ -95,7 +96,7 @@ public class FiveDigitLevelWithTimer extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d("Click:","Restarted Level");
-                timer.cancel();
+                finish();
                 Intent i = new Intent(FiveDigitLevelWithTimer.this, FiveDigitLevelWithTimer.class);
                 startActivity(i);
             }
@@ -105,7 +106,7 @@ public class FiveDigitLevelWithTimer extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d("Click:","Quit Game");
-                timer.cancel();
+                finish();
                 Intent i = new Intent(FiveDigitLevelWithTimer.this, HomePage.class);
                 startActivity(i);
             }
@@ -223,7 +224,7 @@ public class FiveDigitLevelWithTimer extends AppCompatActivity {
         submissions.add(value);
     }
     private void endGameLoss() {
-        timer.cancel();
+        finish();
         Intent i = new Intent(FiveDigitLevelWithTimer.this, GameEndLoss.class);
         startActivity(i);
     }
@@ -240,7 +241,7 @@ public class FiveDigitLevelWithTimer extends AppCompatActivity {
         } else {
             score = 20;
         }
-        timer.cancel();
+        finish();
         /*************************************************
          * Title: How to pass integer from one Activity to another?
          * Author: Daniel Nyamasyo
@@ -282,8 +283,8 @@ public class FiveDigitLevelWithTimer extends AppCompatActivity {
         }
         return numOfBulls;
     }
-    protected void onStop() {
-        super.onStop();
+    protected void onDestroy() {
+        super.onDestroy();
         timer.cancel();
     }
 }

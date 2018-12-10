@@ -96,7 +96,7 @@ public class ThreeDigitLevelWithTimer extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d("Click:","Restarted Level");
-                timer.cancel();
+                finish();
                 Intent i = new Intent(ThreeDigitLevelWithTimer.this, ThreeDigitLevelWithTimer.class);
                 startActivity(i);
             }
@@ -106,7 +106,7 @@ public class ThreeDigitLevelWithTimer extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d("Click:","Quit Game");
-                timer.cancel();
+                finish();
                 Intent i = new Intent(ThreeDigitLevelWithTimer.this, HomePage.class);
                 startActivity(i);
             }
@@ -224,7 +224,7 @@ public class ThreeDigitLevelWithTimer extends AppCompatActivity {
         submissions.add(value);
     }
     private void endGameLoss() {
-        timer.cancel();
+        finish();
         Intent i = new Intent(ThreeDigitLevelWithTimer.this, GameEndLoss.class);
         startActivity(i);
     }
@@ -241,7 +241,7 @@ public class ThreeDigitLevelWithTimer extends AppCompatActivity {
         } else {
             score = 20;
         }
-        timer.cancel();
+        finish();
         /*************************************************
          * Title: How to pass integer from one Activity to another?
          * Author: Daniel Nyamasyo
@@ -283,8 +283,8 @@ public class ThreeDigitLevelWithTimer extends AppCompatActivity {
         }
         return numOfBulls;
     }
-    protected void onStop() {
-        super.onStop();
+    protected void onDestroy() {
+        super.onDestroy();
         timer.cancel();
     }
 }
