@@ -96,6 +96,7 @@ public class ThreeDigitLevelWithTimer extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d("Click:","Restarted Level");
+                timer.cancel();
                 Intent i = new Intent(ThreeDigitLevelWithTimer.this, ThreeDigitLevelWithTimer.class);
                 startActivity(i);
             }
@@ -105,6 +106,7 @@ public class ThreeDigitLevelWithTimer extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d("Click:","Quit Game");
+                timer.cancel();
                 Intent i = new Intent(ThreeDigitLevelWithTimer.this, HomePage.class);
                 startActivity(i);
             }
@@ -140,8 +142,7 @@ public class ThreeDigitLevelWithTimer extends AppCompatActivity {
                         enter.setEnabled(false);
                         endGameWin(numOfEnterClicks);
                     } else {
-                        TextView bulls
-                                = findViewById(R.id.num_of_bulls);
+                        TextView bulls = findViewById(R.id.num_of_bulls);
                         String numOfBullAsString = ((Integer) getNumOfBulls()).toString();
                         bulls.setText(numOfBullAsString);
                         TextView cows = findViewById(R.id.num_of_cows);

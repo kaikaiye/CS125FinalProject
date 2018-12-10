@@ -95,6 +95,7 @@ public class FiveDigitLevelWithTimer extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d("Click:","Restarted Level");
+                timer.cancel();
                 Intent i = new Intent(FiveDigitLevelWithTimer.this, FiveDigitLevelWithTimer.class);
                 startActivity(i);
             }
@@ -104,6 +105,7 @@ public class FiveDigitLevelWithTimer extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d("Click:","Quit Game");
+                timer.cancel();
                 Intent i = new Intent(FiveDigitLevelWithTimer.this, HomePage.class);
                 startActivity(i);
             }
