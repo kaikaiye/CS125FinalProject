@@ -2,6 +2,7 @@ package com.example.owner.cs125finalproject;
 
 import android.content.Intent;
 import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.media.SoundPool;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -18,10 +19,9 @@ public class GameEndWin extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_end_win);
         Button main_menu = findViewById(R.id.main_menu_button);
-        SoundPool soundPool = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
-        int winningSound = soundPool.load(this, R.raw.winningsound, 1);
-        soundPool.play(winningSound, 1, 1, 0 ,1, 1);
-
+        MediaPlayer winningSound = MediaPlayer.create(this, R.raw.winningsound);
+        winningSound.start();
+        
         main_menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

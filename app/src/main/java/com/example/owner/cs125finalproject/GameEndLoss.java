@@ -2,6 +2,7 @@ package com.example.owner.cs125finalproject;
 
 import android.content.Intent;
 import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.media.SoundPool;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -16,9 +17,8 @@ public class GameEndLoss extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_end_loss);
         Button main_menu = (Button) findViewById(R.id.main_menu_button);
-        SoundPool soundPool = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
-        int losingsound = soundPool.load(this, R.raw.losingsound, 1);
-        soundPool.play(losingsound, 1, 1, 0 ,1, 1);
+        MediaPlayer losingSound = MediaPlayer.create(this, R.raw.losingsound);
+        losingSound.start();
 
         main_menu.setOnClickListener(new View.OnClickListener() {
             @Override
