@@ -43,6 +43,15 @@ public class FiveDigitLevel extends AppCompatActivity {
         inputCode.addTextChangedListener(digitInputWatcher);
         submissions = new ArrayList<>();
         isBull = new ArrayList<>();
+        /*************************************************
+         * Title: Play sound using soundpool example
+         * Author: TheFlash
+         * Edited by: Confuse
+         * Date: June 12, 2013
+         * Edit Date: September 9, 2018
+         * Code version: N/A
+         * Availability: https://stackoverflow.com/questions/17069955/play-sound-using-soundpool-example
+         **************************************************/
         soundPool = new SoundPool(2,AudioManager.STREAM_MUSIC, 0);
         bullSound = soundPool.load(this, R.raw.bullsound, 1);
         cowbellSound = soundPool.load(this, R.raw.cowbellsound, 1);

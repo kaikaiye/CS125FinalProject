@@ -19,6 +19,13 @@ public class GameEndWin extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_end_win);
         Button main_menu = findViewById(R.id.main_menu_button);
+        /*************************************************
+         * Title: Android .ogg file stops playing after a few seconds
+         * Author: Vadim Zin4uk
+         * Date: October 8, 2014
+         * Code version: N/A
+         * Availability: https://stackoverflow.com/questions/24011610/android-ogg-file-stops-playing-after-a-few-seconds
+         **************************************************/
         MediaPlayer winningSound = MediaPlayer.create(this, R.raw.winningsound);
         winningSound.start();
 
